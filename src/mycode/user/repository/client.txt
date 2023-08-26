@@ -1,0 +1,6 @@
+client,1,descriere-nume,neuro
+client,2,descriere-nume,cardio
+client,3,descrirere-nume,medicina internal
+doctor,4,descriere-nume,neuro
+doctor,5,descriere-nume,cardio
+doctor,6,descrirere-nume,medicina internal
