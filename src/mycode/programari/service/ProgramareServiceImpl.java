@@ -6,7 +6,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ProgramareServiceImpl implements ProgramareService {
+public final class ProgramareServiceImpl implements ProgramareService {
+
 
     private ArrayList<Programare> programari;
 
@@ -16,10 +17,10 @@ public class ProgramareServiceImpl implements ProgramareService {
     }
 
 
-
     public ProgramareServiceImpl(ArrayList<Programare> programari){
         this.programari=programari;
     }
+
 
     public  void load(){
         try{
@@ -40,4 +41,29 @@ public class ProgramareServiceImpl implements ProgramareService {
             System.out.println("\n");
         }
     }
+
+    @Override
+    public void add(Programare programare) {
+        this.programari.add(programare);
+
+    }
+
+    @Override
+    public void remove(int id) {
+        Programare programareToRemove = null;
+        for (Programare programare : programari) {
+            if (programare.getId() == id) {
+                programareToRemove = programare;
+                break;
+            }
+        }
+
+        if (programareToRemove != null) {
+            programari.remove(programareToRemove);
+        }
+    }
+
+
+
+
 }

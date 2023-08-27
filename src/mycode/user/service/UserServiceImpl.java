@@ -1,46 +1,68 @@
-package mycode.user.service;
+    package mycode.user.service;
 
-import mycode.user.model.IUserFactory;
-import mycode.user.model.User;
-import mycode.user.model.UserFactory;
+    import mycode.user.model.IUserFactory;
+    import mycode.user.model.User;
+    import mycode.user.model.UserFactory;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
+    import java.io.File;
+    import java.util.ArrayList;
+    import java.util.Scanner;
 
-public class UserServiceImpl implements UserService {
+    public class UserServiceImpl implements UserService {
 
-    private ArrayList<User> users;
-    private IUserFactory userFactory;
+        private ArrayList<User> users;
+        private IUserFactory userFactory;
 
-    public UserServiceImpl(){
-        this.users=new ArrayList<>();
-        this.userFactory= new UserFactory();
-        this.load();
-    }
+        public UserServiceImpl(){
+            this.users=new ArrayList<>();
+            this.userFactory= new UserFactory();
+            this.load();
+        }
 
-    public UserServiceImpl(ArrayList<User> users){
-        this.users=users;
-    }
+        public UserServiceImpl(ArrayList<User> users){
+            this.users=users;
+        }
 
-    public void load(){
+        public void load(){
 
-        try {
-            File file = new File("C:\\mycode\\OOP\\Programari\\src\\mycode\\user\\repository\\client.txt");
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                this.users.add(this.userFactory.generateUser(scanner.nextLine()));
+            try {
+                File file = new File("C:\\mycode\\OOP\\Programari\\src\\mycode\\user\\repository\\client.txt");
+                Scanner scanner = new Scanner(file);
+                while (scanner.hasNextLine()) {
+                    this.users.add(this.userFactory.generateUser(scanner.nextLine()));
+                }
+            } catch (Exception e){
+                e.printStackTrace();
             }
-        } catch (Exception e){
-            e.printStackTrace();
         }
-    }
 
-    public void afisareUser(){
-        for(int i =0; i< users.size(); i++){
-            System.out.println(this.users.get(i).toString());
-            System.out.println("\n");
+        public void afisareUser() {
+            for (User user : users) {
+                System.out.println(user.toString());
+                System.out.println("\n");
+            }
         }
-    }
 
-}
+
+        @Override
+        public void add(User user) {
+            this.users.add(user);
+        }
+
+
+        @Override
+        public void remove(User user) {
+            this.users.remove(user);
+
+        }
+
+        public UserService findUserById(int id){
+            for(int i=0; i<users.size();i++){
+                if(users.get(i).getId()==id){
+                    return (UserService) users.get(i);
+                }
+            }
+            return null;
+        }
+
+    }
