@@ -10,6 +10,7 @@ public class Doctor  extends User{
     }
 
     public Doctor (String prop){
+        super(prop);
         String [] split =prop.split(",");
         this.sectieSpital=split[3];
     }

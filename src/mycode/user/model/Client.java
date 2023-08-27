@@ -12,6 +12,7 @@ public class Client extends User{
     }
 
     public Client(String prop){
+        super(prop);
         String [] split =prop.split(",");
         this.afectiune=split[3];
     }
