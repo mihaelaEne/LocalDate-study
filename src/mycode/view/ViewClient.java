@@ -1,11 +1,9 @@
 package mycode.view;
 
-import mycode.config.SingletonPattern;
 import mycode.programari.service.ProgramareService;
-import mycode.user.model.Client;
-import mycode.user.model.User;
+import mycode.programari.service.ProgramareServiceSingleton;
 import mycode.user.service.UserService;
-import mycode.user.service.UserServiceImpl;
+import mycode.user.service.UserServiceSingleton;
 
 import java.util.Scanner;
 
@@ -14,13 +12,13 @@ public class ViewClient {
     private Scanner scanner;
     private UserService userService;
 
-    private ProgramareService programareService
+    private ProgramareService programareService;
 
 
 
     public void UserServiceImpl() {
-        userService = new UserServiceImpl();
-        this.programareService= SingletonPattern.getProgramareService();
+        this.userService = UserServiceSingleton.get();
+        this.programareService= ProgramareServiceSingleton.get();
 
         scanner = new Scanner(System.in);
         play();
