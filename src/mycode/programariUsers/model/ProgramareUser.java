@@ -1,7 +1,5 @@
 package mycode.programariUsers.model;
 
-import mycode.programari.model.Programare;
-
 public class ProgramareUser {
 
     //clasa intermediara, un ffel de enrolment
