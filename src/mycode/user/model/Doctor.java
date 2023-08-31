@@ -1,6 +1,8 @@
 package mycode.user.model;
 
-public class Doctor  extends User{
+import javax.print.Doc;
+
+public class Doctor  extends User  {
 
     private String sectieSpital;
 
@@ -32,4 +34,11 @@ public class Doctor  extends User{
         text+="sectie Spita: "+ this.sectieSpital;
         return text;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Doctor doctor=(Doctor) o;
+        return this.sectieSpital.equals(doctor.sectieSpital);
+    }
+
 }

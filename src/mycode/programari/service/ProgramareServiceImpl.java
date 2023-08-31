@@ -63,7 +63,15 @@ public final class ProgramareServiceImpl implements ProgramareService {
         }
     }
 
-
+    @Override
+    public Programare findById(int id) {
+        for(int i=0; i< programari.size(); i++){
+            if(programari.get(i).getId()==id){
+                return programari.get(i);
+            }
+        }
+        return null;
+    }
 
 
 }

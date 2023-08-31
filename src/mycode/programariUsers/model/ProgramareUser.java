@@ -1,6 +1,8 @@
 package mycode.programariUsers.model;
 
-public class ProgramareUser {
+import java.util.Objects;
+
+public class ProgramareUser implements Comparable<ProgramareUser>{
 
     //clasa intermediara, un ffel de enrolment
     private  int id;
@@ -48,14 +50,34 @@ public class ProgramareUser {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+      ProgramareUser programareUser=(ProgramareUser) o;
+        return  this.id== programareUser.id&&this.idUser==programareUser.idUser&& this.idProgramare==programareUser.idProgramare;
+    }
+
 
 
     @Override
     public String toString() {
-        return "ProgramareUser{" +
-                "id=" + id +
-                ", idUser=" + idUser +
-                ", idProgramare=" + idProgramare +
-                '}';
+
+        String text="";
+        text+="Programare User: "+"\n";
+        text+="id: "+this.id+"\n";
+        text+="id user: "+this.idUser+"\n";
+        text+="id programare: "+this.idProgramare;
+        return text;
+    }
+
+    @Override
+    public int compareTo(ProgramareUser o) {
+        if(o.id>this.id){
+            return -1;
+        }else if(o.id<this.id){
+            return 1;
+        }else {
+            return 0;
+        }
+
     }
 }

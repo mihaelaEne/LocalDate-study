@@ -10,13 +10,15 @@ public class Programare implements ProgramareBuilder,Comparable<Programare> {
     private LocalDateTime dataInceput;
     private LocalDateTime  dataSfarsit;
 
+
+
     public Programare(){
     }
 
-    public Programare(int id, LocalDateTime dataInceput, LocalDateTime dataSfarsit) {
-        this.id = id;
+    public Programare(LocalDateTime dataInceput, LocalDateTime dataSfarsit,int id) {
         this.dataInceput = dataInceput;
         this.dataSfarsit = dataSfarsit;
+        this.id=id;
     }
 
     public Programare(String prop){
@@ -106,10 +108,6 @@ public class Programare implements ProgramareBuilder,Comparable<Programare> {
     }
 
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(dataInceput, dataSfarsit);
-    }
 
     @Override
     public int compareTo(Programare o) {

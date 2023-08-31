@@ -1,29 +1,35 @@
 import mycode.programari.model.Programare;
+import mycode.programari.service.ProgramareService;
+import mycode.programariUsers.model.ProgramareUser;
+import mycode.programariUsers.service.ProgramariUserService;
+import mycode.programariUsers.service.ProgramariUserServiceImpl;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class ProgramareTest {
 
     //"dd,mm,yyyy,hh,mm"
 
     @Test
-    public void testProgramare(){
+    public void testProgramare() {
 
 
-        Programare programare0= new Programare("1,1,2023,0,0","1,2,2023,2,2");
-        Programare programare1=new Programare("3,12,2022,12,45","3,12,2022,12,50");
-        Programare programare2=new Programare("3,12,2022,12,45","3,12,2022,12,50");
-        Programare programare3= new Programare("3,12,2022,10,30","3,12,2022,12,47");
-        Programare programare4=new Programare("12,05,2019,7,11","12,05,2019,9,0");
-        Programare programare5=new Programare("12,05,2019,8,5","12,05,2019,10,26");
-        Programare programare6=new Programare("7,8,2018,16,8","7,8,2018,18,0");
-        Programare programare7=new Programare("7,8,2018,12,7","7,8,2018,21,22");
-        Programare programare8=new Programare("7,10,2023,7,7","6,8,2024,9,9");
-        Programare programare9=new Programare("7,10,2023,7,7", "6,8,2024,8,9");
-        Programare programare10=new Programare("10,10,2002,10,30","10,10,2002,13,55");
-        Programare programare11=new Programare("10,10,2002,12,17","10,10,2002,13,55");
+        Programare programare0 = new Programare("1,1,2023,0,0", "1,2,2023,2,2");
+        Programare programare1 = new Programare("3,12,2022,12,45", "3,12,2022,12,50");
+        Programare programare2 = new Programare("3,12,2022,12,45", "3,12,2022,12,50");
+        Programare programare3 = new Programare("3,12,2022,10,30", "3,12,2022,12,47");
+        Programare programare4 = new Programare("12,05,2019,7,11", "12,05,2019,9,0");
+        Programare programare5 = new Programare("12,05,2019,8,5", "12,05,2019,10,26");
+        Programare programare6 = new Programare("7,8,2018,16,8", "7,8,2018,18,0");
+        Programare programare7 = new Programare("7,8,2018,12,7", "7,8,2018,21,22");
+        Programare programare8 = new Programare("7,10,2023,7,7", "6,8,2024,9,9");
+        Programare programare9 = new Programare("7,10,2023,7,7", "6,8,2024,8,9");
+        Programare programare10 = new Programare("10,10,2002,10,30", "10,10,2002,13,55");
+        Programare programare11 = new Programare("10,10,2002,12,17", "10,10,2002,13,55");
 
 
 //        System.out.println(programare1);
@@ -46,18 +52,53 @@ public class ProgramareTest {
 
 //        verificam suprapunerea
 
-      assertEquals(programare1,programare2);
-      assertEquals(programare2, programare3);
-      assertEquals(programare4,programare5);
-      assertEquals(programare6,programare7);
-      assertEquals(programare8,programare9);
-      assertEquals(programare10,programare11);
+        assertEquals(programare1, programare2);
+        assertEquals(programare2, programare3);
+        assertEquals(programare4, programare5);
+        assertEquals(programare6, programare7);
+        assertEquals(programare8, programare9);
+        assertEquals(programare10, programare11);
+    }
 
 
-      //verificam nu se suprapun
+    @Test
+
+    public void testLoadProgramare() {
+        ArrayList<ProgramareUser> list = new ArrayList<>();
+        ProgramareUser p1 = new ProgramareUser(1, 1, 2);
+        list.add(p1);
+        ProgramareUser p2 = new ProgramareUser(2, 1, 3);
+        list.add(p2);
+        ProgramareUser p3 = new ProgramareUser(3, 1, 1);
+        list.add(p3);
+        ProgramareUser p4 = new ProgramareUser(4, 2, 2);
+        list.add(p4);
 
 
+        ProgramariUserService programariUserService = new ProgramariUserServiceImpl(list);
+
+
+        programariUserService.getAllProgramare(1).forEach(up->{
+
+
+            assertFalse(p4.equals(up));
+        });
+
+
+
+
+
+
+      
 
 
     }
+
+
+
+
 }
+
+
+
+

@@ -1,6 +1,8 @@
 package mycode.programari.model;
 
-public class ProgramarePersoana implements ProgramarePersoanaBuilder {
+import java.util.Objects;
+
+public class ProgramarePersoana implements ProgramarePersoanaBuilder, Comparable<ProgramarePersoana> {
     private int id;
 
     private int idUser;
@@ -43,11 +45,13 @@ public class ProgramarePersoana implements ProgramarePersoanaBuilder {
 
     @Override
     public String toString() {
-        return "ProgramarePersoana{" +
-                "id=" + id +
-                ", idUser=" + idUser +
-                ", idProgramare=" + idProgramare +
-                '}';
+
+        String text="";
+        text+="Programare persoana:"+"\n";
+        text+="Id: "+this.id+"\n";
+        text+="Id user: "+this.idUser+"\n";
+        text+="Id Programare: "+this.idProgramare;
+        return text;
     }
 
     @Override
@@ -70,5 +74,26 @@ public class ProgramarePersoana implements ProgramarePersoanaBuilder {
 
     public static ProgramarePersoana build() {
         return new ProgramarePersoana();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        ProgramarePersoana pp=(ProgramarePersoana) o;
+        return  this.id== pp.id&&this.idUser==pp.idUser&& this.idProgramare==pp.idProgramare;
+    }
+
+
+
+    @Override
+    public int compareTo(ProgramarePersoana o) {
+        if(this.id>o.id){
+            return 1;
+        }else if(this.id<o.id){
+            return -1;
+        }else{
+            return 0;
+        }
+
+
     }
 }
