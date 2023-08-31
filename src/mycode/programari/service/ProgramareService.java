@@ -10,4 +10,8 @@ public interface ProgramareService {
 
       void add(Programare programare);
       void remove(int id);
+
+      Programare findById(int id);
+
+
 }

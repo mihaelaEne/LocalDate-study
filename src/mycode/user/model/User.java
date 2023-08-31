@@ -1,6 +1,8 @@
 package mycode.user.model;
 
-public class User implements  UserBuilder{
+import java.util.Objects;
+
+public class User implements  UserBuilder, Comparable<User>{
 
     private String type;
     private int id;
@@ -46,14 +48,7 @@ public class User implements  UserBuilder{
         this.descrire = descrire;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "type='" + type + '\'' +
-                ", id=" + id +
-                ", descrire='" + descrire + '\'' +
-                '}';
-    }
+
 
     @Override
     public User id(int id) {
@@ -74,5 +69,33 @@ public class User implements  UserBuilder{
     }
     public static User build(){
         return new User();
+    }
+
+    @Override
+    public String toString() {
+        String text="";
+        text+="User: "+"\n";
+        text+=" id: "+this.id+"\n";
+        text+="descriere: "+this.descrire+"\n";
+
+        return text;
+
+    }
+    @Override
+    public boolean equals(Object o) {
+      User user=(User) o;
+      return this.id==user.id&&this.descrire.equals(user.descrire);
+    }
+
+
+    @Override
+    public int compareTo(User o) {
+        if(o.id>this.id){
+            return -1;
+        }else if(o.id<this.id){
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }
