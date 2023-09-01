@@ -3,7 +3,7 @@ package mycode.programari.model;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
+
 
 public class Programare implements ProgramareBuilder,Comparable<Programare> {
     private int id;
@@ -39,6 +39,7 @@ public class Programare implements ProgramareBuilder,Comparable<Programare> {
     public void setDataDeInceputDataDeSfarsit(String dataDeInceput, String dataDeSfarsit) {
 
         int ddi = Integer.parseInt(dataDeInceput.split(",")[0]);
+        
         int mmi = Integer.parseInt(dataDeInceput.split(",")[1]);
         int yyi = Integer.parseInt(dataDeInceput.split(",")[2]);
         int hhi = Integer.parseInt(dataDeInceput.split(",")[3]);

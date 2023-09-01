@@ -29,7 +29,7 @@ public class ViewClientImpl implements ViewClient{
         this.userService = UserServiceSingleton.get();
         this.programareService = ProgramareServiceSingleton.get();
         this.programariUserService = ProgramariUserServiceSingleton.get();
-        program = new HashMap<>();
+        program = new TreeMap<>(    );
         scanner = new Scanner(System.in);
         this.populateProgram();
         play();
@@ -53,13 +53,6 @@ public class ViewClientImpl implements ViewClient{
                 case 1:
                     afisareProgramriUser();
                     break;
-                case 2:
-
-                    break;
-                case 3:
-
-                    break;
-
 
                 default:
                     System.out.println("Alegere incorecta");
