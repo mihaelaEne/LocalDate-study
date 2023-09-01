@@ -84,7 +84,7 @@ public class User implements  UserBuilder, Comparable<User>{
     @Override
     public boolean equals(Object o) {
       User user=(User) o;
-      return this.id==user.id&&this.descrire.equals(user.descrire);
+      return this.id==user.id;
     }
 
 
