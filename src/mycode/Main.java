@@ -4,7 +4,7 @@ package mycode;
 import mycode.view.ViewClient;
 import mycode.view.ViewClientImpl;
 
-public class Main {
+public class                   Main {
     public static void main(String[] args) {
 
         ViewClient viewClient=new ViewClientImpl();

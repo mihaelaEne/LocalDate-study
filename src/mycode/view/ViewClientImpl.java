@@ -89,7 +89,7 @@ public class ViewClientImpl implements ViewClient{
             //todo:gasesc doctorul programrii
 
               List<Integer> idsUsers=this.programariUserService.getProgrmareUsersIds(programare.getId());
-              Doctor doctor=null;
+              Doctor doctor;
               if(idsUsers.get(0)!=this.user.getId()){
                   doctor=this.userService.findDoctorById(idsUsers.get(0));
               }else{
@@ -98,15 +98,13 @@ public class ViewClientImpl implements ViewClient{
 
               if(doctor!=null){
                   System.out.println(programare);
-                  System.out.println("Doctorul este");
-                  System.out.println(doctor);
+                  System.out.println("Doctorul este: "+doctor.getDescrire()                                                    );
+
               }
 
-              //todo:manage
 
 
-
-
+              //todo:manage er
 
 
         });
