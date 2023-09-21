@@ -1,6 +1,7 @@
 package mycode.programariUsers.service;
 
 import mycode.programariUsers.model.ProgramareUser;
+import mycode.user.model.User;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public class ProgramariUserServiceImpl implements ProgramariUserService {
 
     private ArrayList<ProgramareUser> programariUsers;
+
 
     public ProgramariUserServiceImpl() {
         this.programariUsers = new ArrayList<>();
@@ -63,6 +65,19 @@ public class ProgramariUserServiceImpl implements ProgramariUserService {
         });
 
         return programariIds;
+    }
+
+    @Override
+    public List<Integer> getProgrmareUsersIds(int programareId) {
+        List<Integer> usersList=new ArrayList<>();
+
+        this.programariUsers.forEach(programareUser -> {
+            if(programareUser.getIdProgramare()==programareId){
+                usersList.add(programareUser.getIdUser());
+            }
+        });
+
+        return usersList;
     }
 
 

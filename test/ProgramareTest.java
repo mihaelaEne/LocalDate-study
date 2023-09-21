@@ -1,12 +1,12 @@
 import mycode.programari.model.Programare;
 import mycode.programari.service.ProgramareService;
+import mycode.programari.service.ProgramareServiceImpl;
 import mycode.programariUsers.model.ProgramareUser;
 import mycode.programariUsers.service.ProgramariUserService;
 import mycode.programariUsers.service.ProgramariUserServiceImpl;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -78,23 +78,30 @@ public class ProgramareTest {
         ProgramariUserService programariUserService = new ProgramariUserServiceImpl(list);
 
 
-        programariUserService.getAllProgramare(1).forEach(up->{
+        programariUserService.getAllProgramare(1).forEach(up -> {
 
 
             assertFalse(p4.equals(up));
         });
 
-
-
-
-
-
-      
-
-
     }
 
+    @Test
+    public void testAdd() {
 
+        ArrayList<Programare> listaProgramari = new ArrayList<>();
+        Programare programare0 = new Programare("1,1,2023,0,0", "1,2,2023,2,2", 1);
+        listaProgramari.add(programare0);
+        Programare programare1 = new Programare("3,12,2022,12,45", "3,12,2022,12,50", 2);
+        listaProgramari.add(programare1);
+        Programare programare2 = new Programare("3,12,2022,12,45", "3,12,2022,12,50", 3);
+        listaProgramari.add(programare2);
+        Programare programare3 = new Programare("3,12,2022,10,30", "3,12,2022,12,47", 4);
+        listaProgramari.add(programare3);
+
+        ProgramareService programareService = new ProgramareServiceImpl(listaProgramari);
+        assertNull(programareService.findById(3));
+    }
 
 
 }

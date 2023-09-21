@@ -34,6 +34,11 @@ public class Programare implements ProgramareBuilder,Comparable<Programare> {
 
         setDataDeInceputDataDeSfarsit(dataDeInceput,dataDeSfarsit);
      }
+    public Programare(String dataDeInceput, String dataDeSfarsit,int id){
+
+        setDataDeInceputDataDeSfarsit(dataDeInceput,dataDeSfarsit);
+    }
+
 
 
     public void setDataDeInceputDataDeSfarsit(String dataDeInceput, String dataDeSfarsit) {

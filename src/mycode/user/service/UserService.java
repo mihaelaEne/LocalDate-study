@@ -1,5 +1,6 @@
 package mycode.user.service;
 
+import mycode.user.model.Doctor;
 import mycode.user.model.User;
 
 import java.util.List;
@@ -14,5 +15,10 @@ public interface UserService {
      User findById(int id);
 
      List<User> getAllUsers();
+
+     Doctor findDoctorById(int id);
+
+
+
 
 }
