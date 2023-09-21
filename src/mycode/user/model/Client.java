@@ -10,8 +10,8 @@ public class Client extends User  {
     public Client() {
     }
 
-    public Client(String type, int id, String descrire, String afectiune) {
-        super(type, id, descrire);
+    public Client( int id, String descrire, String afectiune) {
+        super("client", id, descrire);
         this.afectiune = afectiune;
     }
 

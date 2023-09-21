@@ -1,5 +1,6 @@
     package mycode.user.service;
 
+    import mycode.user.model.Doctor;
     import mycode.user.model.IUserFactory;
     import mycode.user.model.User;
     import mycode.user.model.UserFactory;
@@ -8,6 +9,7 @@
     import java.util.ArrayList;
     import java.util.List;
     import java.util.Scanner;
+    import java.util.stream.Collectors;
 
     public class UserServiceImpl implements UserService {
 
@@ -79,6 +81,14 @@
                 }
             }
             return null;
+        }
+
+        public Doctor findDoctorById(int id){
+            List<User> doctor = this.users.stream()
+                    .filter(user -> user.getType().equals("doctor") && user.getId() == id)
+                    .collect(Collectors.toList());
+            return  doctor.size()==1?(Doctor) doctor.get(0):null;
+
         }
 
     }

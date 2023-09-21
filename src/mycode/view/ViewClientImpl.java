@@ -6,10 +6,12 @@ import mycode.programari.service.ProgramareServiceSingleton;
 import mycode.programariUsers.service.ProgramariUserService;
 import mycode.programariUsers.service.ProgramariUserServiceSingleton;
 import mycode.user.model.Client;
+import mycode.user.model.Doctor;
 import mycode.user.model.User;
 import mycode.user.service.UserService;
 import mycode.user.service.UserServiceSingleton;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class ViewClientImpl implements ViewClient{
@@ -22,7 +24,8 @@ public class ViewClientImpl implements ViewClient{
     private Map<User, Set<Programare>> program;
 
 
-    private User user = new Client("client",1, "alex andrei","neuro");
+    private User user = new Client(1, "alex andrei","neuro");
+
 
 
     public ViewClientImpl() {
@@ -38,10 +41,10 @@ public class ViewClientImpl implements ViewClient{
 
     public void meniu() {
         System.out.println("Buna ziua!");
-        System.out.println("Afisare programari");
+        System.out.println("Afisare programari-> tasta 1");
     }
 
-@Override
+    @Override
     public void play() {
         int alegere = 0;
         boolean running = true;
@@ -79,9 +82,56 @@ public class ViewClientImpl implements ViewClient{
     }
 
 
-    public void afisareProgramriUser(){
-        program.get(this.user).stream().forEach(System.out::println);
+    private void afisareProgramriUser(){
+        program.get(this.user).stream().forEach(programare -> {
+
+
+            //todo:gasesc doctorul programrii
+
+              List<Integer> idsUsers=this.programariUserService.getProgrmareUsersIds(programare.getId());
+              Doctor doctor=null;
+              if(idsUsers.get(0)!=this.user.getId()){
+                  doctor=this.userService.findDoctorById(idsUsers.get(0));
+              }else{
+                  doctor=this.userService.findDoctorById(idsUsers.get(1));
+              }
+
+              if(doctor!=null){
+                  System.out.println(programare);
+                  System.out.println("Doctorul este");
+                  System.out.println(doctor);
+              }
+
+              //todo:manage
+
+
+
+
+
+
+        });
     }
+
+
+    private void adaugareProgramare(){
+
+
+
+        System.out.println("Introduceti data de inceput a programarii ( dd,mm,yyyy,hh,mm)");
+        LocalDateTime dataInceput=LocalDateTime.parse(scanner.nextLine());
+        System.out.println("Introduceti data de sfarsit a programarii ( dd,mm,yyyy,hh,mm)");
+        LocalDateTime dataSfarsit=LocalDateTime.parse(scanner.nextLine());
+
+//      Programare programare=programareService.findById(id);
+//      if (programare==null){
+//          Programare programareNoua=new Programare(dataInceput, dataSfarsit,id);
+//          programareService.add(programareNoua);
+//      }else{
+//          System.out.println("Exista deja o programare cu datele introduse");
+//      }
+
+    }
+
 
 
 }

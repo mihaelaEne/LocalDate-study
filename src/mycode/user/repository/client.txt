@@ -1,6 +1,6 @@
 client,1,alex andrei,neuro
-client,2,maria nicolae,cardio
+client,5,maria nicolae,cardio
 client,3,irina diana,medicina internal
 doctor,4,marian ion,neuro
-doctor,5,george georgescu,cardio
+doctor,2,george georgescu,cardio
 doctor,6,aryanna tudor,medicina internal
